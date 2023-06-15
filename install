@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+git clone https://github.com/elementsproject/elements /tmp/elements
+cd /tmp/elements
+git checkout simplicity
+cd /tmp/elements/depends
+make NO_QT=1 NO_UPNP=1
+cd ..
+./autogen.sh
+./configure --without-gui --with-incompatible-bdb --with-zmq
+make
+make install
+cd /
+rm -rf /tmp/elements

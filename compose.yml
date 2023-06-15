@@ -1,0 +1,10 @@
+version: '3.6'
+services:
+  simp:
+    image: asoltys/simplicity
+    container_name: simp
+    volumes:
+      - ./data:/home/elements/.elements
+    restart: unless-stopped
+    ports:
+      - '51514:51514'
